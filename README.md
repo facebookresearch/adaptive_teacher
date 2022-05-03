@@ -6,7 +6,7 @@
 
 This is the PyTorch implementation of our paper: <br>
 **Cross-Domain Adaptive Teacher for Object Detection**<br>
- [Yu-Jhe Li](https://yujheli.github.io/), [Xiaoliang Dai](https://sites.google.com/view/xiaoliangdai), [Chih-Yao Ma](https://chihyaoma.github.io/), [Yen-Cheng Liu](https://ycliu93.github.io/), [Kan Chen](https://kanchen.info/), [Bichen Wu](https://scholar.google.com/citations?user=K3QJPdMAAAAJ&hl=en), [Zijian He](https://research.fb.com/people/he-zijian/), [Kris Kitani](http://www.cs.cmu.edu/~kkitani/), [Peter Vajda]()<br>
+ [Yu-Jhe Li](https://yujheli.github.io/), [Xiaoliang Dai](https://sites.google.com/view/xiaoliangdai), [Chih-Yao Ma](https://chihyaoma.github.io/), [Yen-Cheng Liu](https://ycliu93.github.io/), [Kan Chen](https://kanchen.info/), [Bichen Wu](https://scholar.google.com/citations?user=K3QJPdMAAAAJ&hl=en), [Zijian He](https://research.fb.com/people/he-zijian/), [Kris Kitani](http://www.cs.cmu.edu/~kkitani/), [Peter Vajda](https://sites.google.com/site/vajdap)<br>
 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2022 <br>
 
 [[Paper](https://yujheli.github.io/projects/CVPR2022_assest/paper_adaptive_teacher_cvpr22.pdf)] [[Project](https://yujheli.github.io/projects/adaptiveteacher.html)]
