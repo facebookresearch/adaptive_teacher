@@ -1,6 +1,6 @@
 # Cross-Domain Adaptive Teacher for Object Detection
 
-<img src="teaser/pytorch-logo-dark.png" width="10%">[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/) 
+<img src="pytorch-logo-dark.png" width="10%">[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/) 
 
 [![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc/4.0/)
 
@@ -117,9 +117,21 @@ python train_net.py \
       MODEL.WEIGHTS <your weight>.pth
 ```
 
-## Model Weights
+## Results and Model Weights
 
-Coming soon...
+### Real to Artistic Adaptation:
+|  Backbone  | Source set (labeled) |  Target set (unlabeled)  |       Batch size        | AP@.5   |    Model Weights      | Comment |
+| :-----: | :---------------: | :----------------: | :---------------------: | :-----: | :----------: |:-----: | 
+| R101 |    VOC12    |      Clipark1k      | 16 labeled + 16 unlabeled | 40.6  | link (coming soon)| Ours w/o discriminator|
+| R101 |    VOC12    |      Clipark1k      | 16 labeled + 16 unlabeled | 49.3  | link (coming soon)| Ours in the paper|
+| R101+FPN |    VOC12    | Clipark1k | 16 labeled + 16 unlabeled | 51.2  |link (coming soon) | For future work|
+
+### Weather Adaptation:
+|  Backbone  | Source set (labeled) |  Target set (unlabeled)  |       Batch size        | AP@.5   |    Model Weights      | Comment|
+| :-----: | :---------------: | :----------------: | :---------------------: | :-----: | :--------------------------------------------------: |:-----: | 
+| VGG16|    Cityscapes    |      Foggy Cityscapes      | 16 labeled + 16 unlabeled | 48.7  | link (coming soon)|Ours w/o discriminator|
+| VGG16|    Cityscapes    |      Foggy Cityscapes      | 16 labeled + 16 unlabeled | 50.9  | link (coming soon)|Ours in the paper|
+| VGG16+FPN |    Cityscapes    |  Foggy Cityscapes | 16 labeled + 16 unlabeled | 57.4  |link (coming soon) |For future work|
 
 ## Citation
 
