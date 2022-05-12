@@ -103,6 +103,7 @@ class DAobjTwoStagePseudoLabGeneralizedRCNN(GeneralizedRCNN):
         self.dis_type = dis_type
         # self.D_img = FCDiscriminator_img(self.backbone._out_feature_channels['res4']) # Need to know the channel
         
+        # self.D_img = None
         self.D_img = FCDiscriminator_img(self.backbone._out_feature_channels[self.dis_type]) # Need to know the channel
         # self.bceLoss_func = nn.BCEWithLogitsLoss()
 
@@ -164,10 +165,13 @@ class DAobjTwoStagePseudoLabGeneralizedRCNN(GeneralizedRCNN):
         if (not self.training) and (not val_mode):  # only conduct when testing mode
             return self.inference(batched_inputs)
 
+        source_label = 0
+        target_label = 1
 
         if branch == "domain":
-            source_label = 0
-            target_label = 1
+            # self.D_img.train()
+            # source_label = 0
+            # target_label = 1
             # images = self.preprocess_image(batched_inputs)
             images_s, images_t = self.preprocess_image_train(batched_inputs)
 
@@ -195,7 +199,7 @@ class DAobjTwoStagePseudoLabGeneralizedRCNN(GeneralizedRCNN):
             losses["loss_D_img_t"] = loss_D_img_t
             return losses, [], [], None
 
-
+        # self.D_img.eval()
         images = self.preprocess_image(batched_inputs)
 
         if "instances" in batched_inputs[0]:
@@ -207,6 +211,11 @@ class DAobjTwoStagePseudoLabGeneralizedRCNN(GeneralizedRCNN):
 
         # TODO: remove the usage of if else here. This needs to be re-organized
         if branch.startswith("supervised"):
+            features_s = grad_reverse(features[self.dis_type])
+            D_img_out_s = self.D_img(features_s)
+            loss_D_img_s = F.binary_cross_entropy_with_logits(D_img_out_s, torch.FloatTensor(D_img_out_s.data.size()).fill_(source_label).to(self.device))
+
+            
             # Region proposal network
             proposals_rpn, proposal_losses = self.proposal_generator(
                 images, features, gt_instances
@@ -231,6 +240,42 @@ class DAobjTwoStagePseudoLabGeneralizedRCNN(GeneralizedRCNN):
             losses = {}
             losses.update(detector_losses)
             losses.update(proposal_losses)
+            losses["loss_D_img_s"] = loss_D_img_s*0.001
+            return losses, [], [], None
+
+        elif branch.startswith("supervised_target"):
+
+            features_t = grad_reverse(features_t[self.dis_type])
+            D_img_out_t = self.D_img(features_t)
+            loss_D_img_t = F.binary_cross_entropy_with_logits(D_img_out_t, torch.FloatTensor(D_img_out_t.data.size()).fill_(target_label).to(self.device))
+
+            
+            # Region proposal network
+            proposals_rpn, proposal_losses = self.proposal_generator(
+                images, features, gt_instances
+            )
+
+            # roi_head lower branch
+            _, detector_losses = self.roi_heads(
+                images,
+                features,
+                proposals_rpn,
+                compute_loss=True,
+                targets=gt_instances,
+                branch=branch,
+            )
+
+            # visualization
+            if self.vis_period > 0:
+                storage = get_event_storage()
+                if storage.iter % self.vis_period == 0:
+                    self.visualize_training(batched_inputs, proposals_rpn, branch)
+
+            losses = {}
+            losses.update(detector_losses)
+            losses.update(proposal_losses)
+            losses["loss_D_img_t"] = loss_D_img_t*0.001
+            # losses["loss_D_img_s"] = loss_D_img_s*0.001
             return losses, [], [], None
 
         elif branch == "unsup_data_weak":
