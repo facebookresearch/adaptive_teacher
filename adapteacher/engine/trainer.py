@@ -600,7 +600,7 @@ class ATeacherTrainer(DefaultTrainer):
 
             # 5. input strongly augmented unlabeled data into model
             record_all_unlabel_data, _, _, _ = self.model(
-                all_unlabel_data, branch="supervised"
+                all_unlabel_data, branch="supervised_target"
             )
             new_record_all_unlabel_data = {}
             for key in record_all_unlabel_data.keys():
