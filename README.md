@@ -21,6 +21,7 @@ IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2022 <br>
 
 - Python ≥ 3.6
 - PyTorch ≥ 1.5 and torchvision that matches the PyTorch installation.
+- Detectron2 == 0.3 (The version I used to run my code)
 
 ## Install python env
 
