@@ -554,8 +554,8 @@ class ATeacherTrainer(DefaultTrainer):
 
             # probe_metrics = ['compute_fp_gtoutlier', 'compute_num_box']
             # probe_metrics = ['compute_num_box']  
-            analysis_pred, _ = self.probe.compute_num_box(gt_unlabel_k,proposals_roih_unsup_k,'pred')
-            record_dict.update(analysis_pred)
+            # analysis_pred, _ = self.probe.compute_num_box(gt_unlabel_k,proposals_roih_unsup_k,'pred')
+            # record_dict.update(analysis_pred)
             ######################## For probe END #################################
 
             #  2. Pseudo-labeling
