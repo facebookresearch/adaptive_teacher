@@ -78,6 +78,11 @@ adaptive_teacher/
         ├── Annotations/
         ├── ImageSets/
         └── JPEGImages/
+   └── watercolor/
+        ├── Annotations/
+        ├── ImageSets/
+        └── JPEGImages/
+    
 ```
 
 # Training
