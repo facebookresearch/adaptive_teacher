@@ -23,6 +23,10 @@ IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2022 <br>
 - PyTorch ≥ 1.5 and torchvision that matches the PyTorch installation.
 - Detectron2 == 0.3 (The version I used to run my code)
 
+## Our tested environment
+
+- 8 V100
+
 ## Install python env
 
 To install required dependencies on the virtual environment of the python (e.g., virtualenv for python3), please run the following command at the root of this code:
@@ -125,6 +129,7 @@ python train_net.py \
 
 ## Results and Model Weights
 
+If you are urgent with the pre-trained weights, please download our interal prod_weights here at the [Link](https://drive.google.com/drive/folders/17p8oYjhmoA77_hyVZq4WLJezsUiSZhdi?usp=sharing). Please note that the key name in the pre-trained model is slightly different and you will need to align manually. Otherwise, please wait and we will try to release the local weights in the future.
 ### Real to Artistic Adaptation:
 |  Backbone  | Source set (labeled) |  Target set (unlabeled)  |       Batch size        | AP@.5   |    Model Weights      | Comment |
 | :-----: | :---------------: | :----------------: | :---------------------: | :-----: | :----------: |:-----: | 
