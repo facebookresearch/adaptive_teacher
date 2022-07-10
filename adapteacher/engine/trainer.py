@@ -13,7 +13,9 @@ from detectron2.checkpoint import DetectionCheckpointer
 from detectron2.engine import DefaultTrainer, SimpleTrainer, TrainerBase
 from detectron2.engine.train_loop import AMPTrainer
 from detectron2.utils.events import EventStorage
-from detectron2.evaluation import COCOEvaluator, verify_results, DatasetEvaluators
+from detectron2.evaluation import verify_results, DatasetEvaluators
+# from detectron2.evaluation import COCOEvaluator, verify_results, DatasetEvaluators
+
 from detectron2.data.dataset_mapper import DatasetMapper
 from detectron2.engine import hooks
 from detectron2.structures.boxes import Boxes
@@ -31,7 +33,7 @@ from adapteacher.engine.hooks import LossEvalHook
 from adapteacher.modeling.meta_arch.ts_ensemble import EnsembleTSModel
 from adapteacher.checkpoint.detection_checkpoint import DetectionTSCheckpointer
 from adapteacher.solver.build import build_lr_scheduler
-from adapteacher.evaluation import PascalVOCDetectionEvaluator
+from adapteacher.evaluation import PascalVOCDetectionEvaluator, COCOEvaluator
 
 from .probe import OpenMatchTrainerProbe
 import copy
@@ -521,6 +523,7 @@ class ATeacherTrainer(DefaultTrainer):
             if self.iter == self.cfg.SEMISUPNET.BURN_UP_STEP:
                 # update copy the the whole model
                 self._update_teacher_model(keep_rate=0.00)
+                # self.model.build_discriminator()
 
             elif (
                 self.iter - self.cfg.SEMISUPNET.BURN_UP_STEP
