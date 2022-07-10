@@ -97,9 +97,10 @@ adaptive_teacher/
 python train_net.py \
       --num-gpus 8 \
       --config configs/faster_rcnn_R101_cross_clipart.yaml\
+      OUTPUT_DIR output/exp_clipart
 ```
 
-- Train the  Adaptive Teacher under cityscapes (source) and foggy cityscapes (target)
+- Train the Adaptive Teacher under cityscapes (source) and foggy cityscapes (target)
 
 ```shell
 python train_net.py\
