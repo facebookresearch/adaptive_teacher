@@ -135,7 +135,7 @@ If you are urgent with the pre-trained weights, please download our interal prod
 |  Backbone  | Source set (labeled) |  Target set (unlabeled)  |       Batch size        | AP@.5   |    Model Weights      | Comment |
 | :-----: | :---------------: | :----------------: | :---------------------: | :-----: | :----------: |:-----: | 
 | R101 |    VOC12    |      Clipark1k      | 16 labeled + 16 unlabeled | 40.6  | link (coming soon)| Ours w/o discriminator|
-| R101 |    VOC12    |      Clipark1k      | 4 labeled + 4 unlabeled | 45.6  | [link]()| |
+| R101 |    VOC12    |      Clipark1k      | 4 labeled + 4 unlabeled | 45.6  | [link](https://drive.google.com/drive/folders/1_DGtUgFvMcU8svOlwRfRqB2G7eckTifN?usp=sharing)| lr=0.01, dis_w=0.1, default |
 | R101 |    VOC12    |      Clipark1k      | 16 labeled + 16 unlabeled | 49.3  | link (coming soon)| Ours in the paper|
 | R101+FPN |    VOC12    | Clipark1k | 16 labeled + 16 unlabeled | 51.2  |link (coming soon) | For future work|
 
