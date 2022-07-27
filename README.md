@@ -9,7 +9,7 @@ This is the PyTorch implementation of our paper: <br>
  [Yu-Jhe Li](https://yujheli.github.io/), [Xiaoliang Dai](https://sites.google.com/view/xiaoliangdai), [Chih-Yao Ma](https://chihyaoma.github.io/), [Yen-Cheng Liu](https://ycliu93.github.io/), [Kan Chen](https://kanchen.info/), [Bichen Wu](https://scholar.google.com/citations?user=K3QJPdMAAAAJ&hl=en), [Zijian He](https://research.fb.com/people/he-zijian/), [Kris Kitani](http://www.cs.cmu.edu/~kkitani/), [Peter Vajda](https://sites.google.com/site/vajdap)<br>
 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2022 <br>
 
-[[Paper](https://yujheli.github.io/projects/CVPR2022_assest/paper_adaptive_teacher_cvpr22.pdf)] [[Project](https://yujheli.github.io/projects/adaptiveteacher.html)]
+[[Paper](https://openaccess.thecvf.com/content/CVPR2022/papers/Li_Cross-Domain_Adaptive_Teacher_for_Object_Detection_CVPR_2022_paper.pdf)] [[Project](https://yujheli.github.io/projects/adaptiveteacher.html)]
 
 <p align="center">
 <img src="model.png" width="85%">
@@ -25,7 +25,8 @@ IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2022 <br>
 
 ## Our tested environment
 
-- 8 V100
+- 8 V100 (16 batch size)
+- 4 2080 Ti (4 batch size)
 
 ## Install python env
 
@@ -134,17 +135,18 @@ If you are urgent with the pre-trained weights, please download our interal prod
 ### Real to Artistic Adaptation:
 |  Backbone  | Source set (labeled) |  Target set (unlabeled)  |       Batch size        | AP@.5   |    Model Weights      | Comment |
 | :-----: | :---------------: | :----------------: | :---------------------: | :-----: | :----------: |:-----: | 
-| R101 |    VOC12    |      Clipark1k      | 16 labeled + 16 unlabeled | 40.6  | link (coming soon)| Ours w/o discriminator|
-| R101 |    VOC12    |      Clipark1k      | 4 labeled + 4 unlabeled | 45.6  | [link](https://drive.google.com/drive/folders/1_DGtUgFvMcU8svOlwRfRqB2G7eckTifN?usp=sharing)| lr=0.01, dis_w=0.1, default |
-| R101 |    VOC12    |      Clipark1k      | 16 labeled + 16 unlabeled | 49.3  | link (coming soon)| Ours in the paper|
+| R101 |    VOC12    |      Clipark1k      | 16 labeled + 16 unlabeled | 40.1  | [link](https://drive.google.com/file/d/1mzqSlkftJDTj1IWZC0huuMIzWDtfSaL0/view?usp=sharing)| Ours w/o discriminator (dis=0)|
+| R101 |    VOC12    |      Clipark1k      | 4 labeled + 4 unlabeled | 47.2  | [link](https://drive.google.com/file/d/1F72bfPP-5uu4H2rS_OscSLVhvjHeylR-/view?usp=sharing)| lr=0.01, dis_w=0.1, default |
+| R101 |    VOC12    |      Clipark1k      | 16 labeled + 16 unlabeled | 49.6  | [link](https://drive.google.com/file/d/1qbueKiNPLIP4gFJrUQi_1kpCAQmUivFG/view?usp=sharing)| Ours in the paper, unsup_w=0.5|
 | R101+FPN |    VOC12    | Clipark1k | 16 labeled + 16 unlabeled | 51.2  |link (coming soon) | For future work|
 
 ### Weather Adaptation:
 |  Backbone  | Source set (labeled) |  Target set (unlabeled)  |       Batch size        | AP@.5   |    Model Weights      | Comment|
 | :-----: | :---------------: | :----------------: | :---------------------: | :-----: | :--------------------------------------------------: |:-----: | 
-| VGG16|    Cityscapes    |      Foggy Cityscapes      | 16 labeled + 16 unlabeled | 48.7  | link (coming soon)|Ours w/o discriminator|
-| VGG16|    Cityscapes    |      Foggy Cityscapes      | 16 labeled + 16 unlabeled | 50.9  | link (coming soon)|Ours in the paper|
-| VGG16+FPN |    Cityscapes    |  Foggy Cityscapes | 16 labeled + 16 unlabeled | 57.4  |link (coming soon) |For future work|
+| VGG16|    Cityscapes    |      Foggy Cityscapes (ALL)      | 16 labeled + 16 unlabeled | 48.7  | link (coming soon)|Ours w/o discriminator|
+| VGG16|    Cityscapes    |      Foggy Cityscapes (ALL)      | 16 labeled + 16 unlabeled | 50.9  | link (coming soon)|Ours in the paper|
+| VGG16|    Cityscapes    |      Foggy Cityscapes (0.02)      | 16 labeled + 16 unlabeled | 50.9  | link (coming soon)|Ours in the paper|
+| VGG16+FPN |    Cityscapes    |  Foggy Cityscapes (ALL) | 16 labeled + 16 unlabeled | 57.4  |link (coming soon) |For future work|
 
 ## Citation
 
