@@ -145,7 +145,7 @@ If you are urgent with the pre-trained weights, please download our interal prod
 | :-----: | :---------------: | :----------------: | :---------------------: | :-----: | :--------------------------------------------------: |:-----: | 
 | VGG16|    Cityscapes    |      Foggy Cityscapes (ALL)      | 16 labeled + 16 unlabeled | 48.7  | link (coming soon)|Ours w/o discriminator|
 | VGG16|    Cityscapes    |      Foggy Cityscapes (ALL)      | 16 labeled + 16 unlabeled | 50.9  | link (coming soon)|Ours in the paper|
-| VGG16|    Cityscapes    |      Foggy Cityscapes (0.02)      | 16 labeled + 16 unlabeled | 50.9  | link (coming soon)|Ours in the paper|
+| VGG16|    Cityscapes    |      Foggy Cityscapes (0.02)      | 16 labeled + 16 unlabeled | in progress  | link (coming soon)|Ours in the paper|
 | VGG16+FPN |    Cityscapes    |  Foggy Cityscapes (ALL) | 16 labeled + 16 unlabeled | 57.4  |link (coming soon) |For future work|
 
 ## Citation
