@@ -214,7 +214,7 @@ class DAobjTwoStagePseudoLabGeneralizedRCNN(GeneralizedRCNN):
         features = self.backbone(images.tensor)
 
         # TODO: remove the usage of if else here. This needs to be re-organized
-        if branch.startswith("supervised"):
+        if branch == "supervised":
             features_s = grad_reverse(features[self.dis_type])
             D_img_out_s = self.D_img(features_s)
             loss_D_img_s = F.binary_cross_entropy_with_logits(D_img_out_s, torch.FloatTensor(D_img_out_s.data.size()).fill_(source_label).to(self.device))
@@ -247,7 +247,7 @@ class DAobjTwoStagePseudoLabGeneralizedRCNN(GeneralizedRCNN):
             losses["loss_D_img_s"] = loss_D_img_s*0.001
             return losses, [], [], None
 
-        elif branch.startswith("supervised_target"):
+        elif branch == "supervised_target":
 
             # features_t = grad_reverse(features_t[self.dis_type])
             # D_img_out_t = self.D_img(features_t)
