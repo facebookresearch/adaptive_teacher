@@ -23,6 +23,7 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+load_only_002 = False
 
 def _get_cityscapes_files(image_dir, gt_dir):
     files = []
@@ -33,6 +34,8 @@ def _get_cityscapes_files(image_dir, gt_dir):
         city_img_dir = os.path.join(image_dir, city)
         city_gt_dir = os.path.join(gt_dir, city)
         for basename in PathManager.ls(city_img_dir):
+            if load_only_002 and '0.02.png' not in basename:
+                continue
             image_file = os.path.join(city_img_dir, basename)
 
             # suffix = "leftImg8bit.png"
@@ -83,6 +86,7 @@ def load_cityscapes_instances(image_dir, gt_dir, from_json=True, to_polygons=Tru
         files,
     )
     logger.info("Loaded {} images from {}".format(len(ret), image_dir))
+    pool.close()
 
     # Map cityscape ids to contiguous ids
     from cityscapesscripts.helpers.labels import labels
