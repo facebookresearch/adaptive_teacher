@@ -14,11 +14,13 @@ class DetectionTSCheckpointer(DetectionCheckpointer):
             if checkpoint.get("matching_heuristics", False):
                 self._convert_ndarray_to_tensor(checkpoint["model"])
                 # convert weights by name-matching heuristics
-                checkpoint["model"] = align_and_update_state_dicts(
-                    self.model.modelStudent.state_dict(),
+                model_state_dict = self.model.modelStudent.state_dict()
+                align_and_update_state_dicts(
+                    model_state_dict,
                     checkpoint["model"],
                     c2_conversion=checkpoint.get("__author__", None) == "Caffe2",
                 )
+                checkpoint["model"] = model_state_dict
 
             # for non-caffe2 models, use standard ways to load it
             incompatible = self._load_student_model(checkpoint)
@@ -39,11 +41,13 @@ class DetectionTSCheckpointer(DetectionCheckpointer):
             if checkpoint.get("matching_heuristics", False):
                 self._convert_ndarray_to_tensor(checkpoint["model"])
                 # convert weights by name-matching heuristics
-                checkpoint["model"] = align_and_update_state_dicts(
-                    self.model.state_dict(),
+                model_state_dict = self.model.state_dict()
+                align_and_update_state_dicts(
+                    model_state_dict,
                     checkpoint["model"],
                     c2_conversion=checkpoint.get("__author__", None) == "Caffe2",
                 )
+                checkpoint["model"] = model_state_dict 
             # for non-caffe2 models, use standard ways to load it
             incompatible = super()._load_model(checkpoint)
 
